@@ -96,8 +96,10 @@ class DbLoader:
             database = os.getenv("DB_DATABASE")
         )
         print("Connection established...\n")
+        return self.conn
+
     def add_data(self, collection: list):
-        self.cursor = self.conn.cursor()
+        self.cursor = self.connection.cursor()
         query = "INSERT INTO logs VALUES (%s,%s,%s)"
         try:
             for log in collection:
